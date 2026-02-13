@@ -1,64 +1,68 @@
 /*
-TITLE:Footsteps Game
+TITLE:DIlbert Fishing Game
 AUTHOR/PROGRAMMER: Lavanthi Narasimman
 DATE DUE: 2-9-2026
-DATE SUBMITTED: 2-9-2026
+DATE SUBMITTED: 2-12-2026(3 day extension)
 COURSE TITLE: Game Design
 MEETING TIME(S): 10:30-12:00
-DESCRIPTION: Footsteps is a two player binding ame. Players will have 
-50 points and the token will be placed in the 4th box out of the 7 boxes aka the middle.
-Every turn, both players secretly big points. Who ever bigs a higher number moves the token
-one space toward their side. Both players lose the points thy bid. A player wins by getting
-the token to thier end of the board. If a player runs out points, the other continues binding,
-which basically causes the other person to win the game. If both players run out of points,
-then its a draw.
+DESCRIPTION: 
+Dilbert Fishing is a simple catching game where you move your fishing string around a 5x5 grid
+to catch fish. You start on square 13 (middle of the grid).Then you click any square to move your
+fishing string there. Every 3 seconds, a fish appears on a random square.If your string is on that 
+square when the fish appears, YOU CATCH IT! If you miss, the fish gets away.
+These are the different fish I came up with , plus their points and how rare they are
+MARGIN - +10 points (Rare - 10% chance)
+BLUEY - +5 points (Uncommon - 20% chance)
+DD - +3 points (Common - 30% chance)
+CLOWNFISH - -10 points (Common - 35% chance)
+DEG - GAME OVER (Very Rare - 5% chance)
+You win if you get 50 points, you lose if you get below -50 points, or if you catch the DEG Fish.
 HONOR CODE: Lavanthi Narasimman
 HOWTO: saw the files, and then upload into the assighment
 INPUT FILE: [N/A]
 OUTPUT FILE: [N/A]
 BIBLIOGRAPHY: 
-Below are a list of websites i used when working on this project:
-    (these two i used for the break and switch case commands)
-    -https://www.w3schools.com/java/java_break.asp
-    -https://www.datacamp.com/doc/java/break
-    -https://www.w3schools.com/java/java_switch.asp
+Below are all the websites I used to code this game:
+  -https://docs.oracle.com/javase/8/docs/api/java/awt/Color.html
+  -https://processing.org/reference/mousePressed_.html
+  -https://www.geeksforgeeks.org/java/mouselistener-mousemotionlistener-java/
+  -https://docs.oracle.com/javase/8/docs/technotes/guides/2d/spec/j2d-fonts.html
+  -https://www.geeksforgeeks.org/java/print-2-d-array-matrix-java/
+  -https://www.w3schools.com/java/ref_math_sin.asp
+  -https://www.geeksforgeeks.org/java/java-8-clock-millis-method-with-examples/
+  -https://www.tutorialspoint.com/java/lang/system_currenttimemillis.htm
+  -https://www.youtube.com/watch?v=ooh9_l1ZpKk
+  -https://www.youtube.com/watch?v=FmEWqS2FP3U
+  
 (include any websites, books, et cetera, that you referenced to aide
 you in completing your work. This would include your textbook.)
-
 RESOURCES: N/A
 TUTORS: N/a
 COMMENTS: N/A,
+REFLECTION: 
 
-REFLECTION: This game took me 8 hours to code. I planned the game to have different game states like
-the start screen, where its player A's turn, player B's turn and processing the move and the game over/end
-screen. I faced a few problems when working on this probelms. Since my entire game was based on the 
-different gameStates, I used switch(gameState) in both the draw() and keyPressed() functions. I didn't
-use the break command after each case. This became a problem. Because of this, the program would run
-multiple cases at once instead of stopping at the right one. This  would make the game skip screens, 
-and run the player B and A state at the same time. 
-
-I researched and looked at examples online( I also asked chatgpt what are breaks and how they work, and
-to give me examples), I realized that without the break command, the switch statement just fell to the next
-case. I fixed this by adding a break command after every case so that only one game state ran at a time. Once
-I did that, the game flow worked properly, and the screen came when they were supposed to. 
-
-Another challenge I had was with the iser input for bidding. I needed to make sure that the users were
-only entering numbers. As I tested out the game, I realised the players should also be able to delete inputs
-usng backspace(if they ever chnaged their minds), and click enter to submit the inputs. 
-Before I worked on this problem, I realized that game would accept letters, and allow empty bids. This caused 
-problems cause then how could subtraction work in the game. I also realizsed that I had to make sure the player 
-could not add more point than what they had. To fix this, I carefully checked each key press. I added a condition 
-to allowed numeric keys (0-9) to be accepted, abckspace would remove the last character of the string and enter 
-would only submit the bid if it was not empty and had a number. I wrote a code saying if the bid was higher than
-the max number allowed, the program automatically corrected it to the highest valid value. After these changes, the
-bidding part worked much better. I also struggled with the win scenario. Cause there were 3 ways the game ended. 
-Either player a wins, player b wins, or its tie. This happen if either the token ends up in one side of if one/both
-players run out of points. I was not sure how to write all the ending possibilties without the code getting messy.
-Then I thought how I made different gamestates, I can make different winnign ends. So I made a variable called winner.
-If winner = 2 player B wins, winner =1 player a wins, if winner = 3 then its a draw. I also made a checkWinConditions
-so, that i can be able to properly check to see if someone won so I can show the end screen.
-
-
- the length of time it took you to complete this assignment. Include any
-problems that you encountered and how you overcame them.
+This project in my opinion was much ahrder to develop. I took liek 6 days to work on this. 
+The reason this ended being a few dyas late is cause I had a bad start witht he processing. 
+My computer was taking forever to fully update it, anytime I tried to run it install it, it always 
+stopped in the middle out of nowhere not letting it run. When working on this project,
+I had a bunch of problems that I had to overcome. Here are some of them. 
+Firts was with clicking the buttons.The buttons kept not working. I would click "START FISHING" 
+and nothing would happen.I spent hours trying to figure out why. Finally I realized my mouseX/mouseY 
+coordinates were off because I was using translate() and pushMatrix() but forgetting that the button 
+positions change when you move the whole screen around. I had to do a lot of math to figure 
+out the exact pixel positions. Line 215-221 and 230-236 were fixed like five times. Another
+problem was with the Fonts Crashing. Originally I was using Montserrat and Open Sans because they
+look nice. But Processing couldn't find them on some computers and the whole program would crash. 
+I wasted a whole day trying to fix this before just switching to Arial and Georgia. It doesn't look as
+fancy but at least it runs.Another problem was with theThe Confetti Bubbles in the end screen. 
+Technically this part was not reuired but I really wanted to add this. This was actually fun to make 
+but hard to get right. I wanted little bubbles floating up on the win screen. I had to use sin() and 
+frameCount and modulo and it took me forever to understand why they weren't moving. I still don't fully 
+get the math but it works so I'm not touching it.Another problem was with the Fish Spawning Every 3 
+Seconds during the game screen. At first I used frameCount and tried to spawn a fish every 180 frames 
+(60fps * 3 seconds). But if the game lagged, the timing was off. Then I switched to millis() which tracks 
+actual time. But then I forgot to reset lastSpawnTime when restarting the game, so fish would spawn 
+instantly. Fixed that on line 838. A final problem was with the the quit Button Position.On line 499-503 
+I have the quit button in the top right corner. I must have adjusted the x position 15 times. It kept 
+showing up partially off the screen or too far left. 1400 - 120 = 1280 was the sweet spot.
 */
